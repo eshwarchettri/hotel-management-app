@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  showLogoutButton = true;
 
-  constructor() { }
+  constructor() {
+  }
+
 
   ngOnInit(): void {
+  }
+
+  logOut(): void {
+    sessionStorage.clear();
   }
 
 }
