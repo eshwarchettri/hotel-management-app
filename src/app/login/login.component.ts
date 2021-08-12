@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {TestService} from '../service/test.service';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,18 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private testService: TestService) {
+  }
 
   ngOnInit(): void {
   }
 
-  private clicked(): void {
+  clicked(): void {
+    this.testService.getBySearchCriteria(null, null, null, null).subscribe((data) => {
+      console.log(data);
+    }, error => {
+      console.log(error);
+    });
     console.log('test');
     this.router.navigate(['home']);
   }
