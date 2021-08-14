@@ -1,1 +1,59 @@
-<button class="btn" (click)="clicked()">Click me to go to home page</button>
+
+<div class="container-fluid">
+  <div class="col-lg-12 pb-5"></div>
+  <div class="row pt-5">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="alert alert-danger alert-dismissible" *ngIf="showErrorMessage">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{this.errorMessage}}
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="card">
+        <div class="card-header">
+          Login
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="mb-3">
+                  <b>Login ID</b>
+                </label>
+                <input class="form-control" type="text" placeholder="Username" formControlName="userName"/>
+                <div [hidden]="!loginInfo.userName.touched" *ngIf="loginInfo.userName.errors"
+                     class="alert-danger"> User name is wrong!</div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label class="mb-3">
+                  <b>Password</b>
+                </label>
+                <div class="input-group">
+                  <input class="form-control" [type]="password" placeholder="Password" formControlName="password"/>
+                  <div class="input-group-append" >
+                    <button type="button" (click)="onClick()">
+                      <i class="fa fa-eye" aria-hidden="true" *ngIf="!showEye"></i>
+                      <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="showEye"></i>
+                    </button>
+                  </div>
+                </div>
+                <div [hidden]="!loginInfo.password.touched" *ngIf="loginInfo.password.errors"
+                     class="alert-danger"> Password is wrong!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="form-group d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary ">Login</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="col-md-3"></div>
+  </div>
+</div>

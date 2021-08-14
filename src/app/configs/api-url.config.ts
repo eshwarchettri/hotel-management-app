@@ -1,5 +1,5 @@
 export const apiUrls = {
-    testUrl: 'test/get'
+    authenticationUrl: 'authenticate/user-login'
 
   };
 

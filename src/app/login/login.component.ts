@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {TestService} from '../service/test.service';
+import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import {LoginService} from '../service/login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,20 +9,54 @@ import {TestService} from '../service/test.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  password = 'password';
+  show = false;
+  showEye = false;
+  private credential = {userName: '', password: ''};
+   errorMessage = '' ;
+   showErrorMessage = false;
 
-  constructor(private router: Router, private testService: TestService) {
+  constructor(private router: Router, private loginService: LoginService
+  ) {
   }
+
+  loginForm: any;
 
   ngOnInit(): void {
+    this.initLoginForm();
   }
 
-  clicked(): void {
-    this.testService.getBySearchCriteria(null, null, null, null).subscribe((data) => {
-      console.log(data);
-    }, error => {
-      console.log(error);
+  get loginInfo(): any {
+    return this.loginForm.controls;
+  }
+
+  onClick(): any {
+    if (this.password === 'password') {
+      this.password = 'text';
+      this.showEye = true;
+    } else {
+      this.password = 'password';
+      this.showEye = false;
+    }
+  }
+
+  initLoginForm(): void {
+    this.loginForm = new FormBuilder().group({
+      userName: new FormControl('', [Validators.required, Validators.maxLength(40)]),
+      password: new FormControl('', [Validators.required, Validators.maxLength(18)])
     });
-    console.log('test');
-    this.router.navigate(['home']);
+  }
+
+  onSubmit(): void {
+    this.credential.userName = this.loginForm.controls.userName.value;
+    this.credential.password = this.loginForm.controls.password.value;
+    this.loginService.post(this.credential).subscribe((res: any) => {
+      this.router.navigate(['home']);
+      // tslint:disable-next-line:no-shadowed-variable
+    }, (error: any) => {
+      console.log(error);
+      this.showErrorMessage = true;
+      this.errorMessage = error.error.message;
+    });
   }
 }

@@ -16,6 +16,7 @@ export class BaseCRUDService {
     return this.http.post<any>(this.restUrl, jsonData, {
       reportProgress: true
     }).pipe(map(data => {
+      console.log('dddd', data);
       return data;
     }));
   }
