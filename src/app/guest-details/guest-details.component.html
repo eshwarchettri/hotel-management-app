@@ -1,0 +1,31 @@
+<div class="container">
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>Serial no</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>CheckedIn Time</th>
+      <th>CheckedOut Time</th>
+      <th>Room No</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let guest of guestDetails; index as i">
+      <td>{{i+1}}</td>
+      <td>{{guest.guestFirstName}}</td>
+      <td>{{guest.guestLastName}}</td>
+      <td>{{guest.checkinDateTime}}</td>
+      <td>{{guest.checkoutDateTime}}</td>
+      <td>{{guest.room?.roomNumber}}</td>
+      <td><div class="d-flex justify-content-center">
+        <div class="row">
+          <i class="fa fa-pencil mr-3" style="color: green; cursor: pointer" aria-hidden="true" (click)="editGuest(guest.guestId)"></i>
+          <i class="fa fa-trash-o" aria-hidden="true" style="color: red; cursor: pointer" (click)="deleteGuest(guest.guestId)"></i>
+        </div>
+      </div></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
