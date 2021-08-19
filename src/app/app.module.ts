@@ -9,13 +9,17 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import {ReactiveFormsModule} from "@angular/forms";
+import { GuestBookingComponent } from './guest-booking/guest-booking.component';
+import { GuestDetailsComponent } from './guest-details/guest-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    GuestBookingComponent,
+    GuestDetailsComponent
   ],
   imports: [
     BrowserModule,
