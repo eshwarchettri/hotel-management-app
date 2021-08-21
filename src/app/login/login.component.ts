@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {LoginService} from '../service/login.service';
+import {ObservableService} from "../service/observable.service";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,9 @@ export class LoginComponent implements OnInit {
    errorMessage = '' ;
    showErrorMessage = false;
 
-  constructor(private router: Router, private loginService: LoginService
+  constructor(private router: Router,
+              private loginService: LoginService,
+              private observableService: ObservableService
   ) {
   }
 
@@ -50,7 +53,8 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.credential.userName = this.loginForm.controls.userName.value;
     this.credential.password = this.loginForm.controls.password.value;
-    this.loginService.post(this.credential).subscribe((res: any) => {
+    this.loginService.post(this.credential).subscribe(() => {
+      this.observableService.successFullLogin();
       this.router.navigate(['home']);
       // tslint:disable-next-line:no-shadowed-variable
     }, (error: any) => {

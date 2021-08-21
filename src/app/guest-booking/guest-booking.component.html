@@ -19,22 +19,31 @@
                   <div class="form-group">
                     <label for="firstName">First Name</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
 
-                    <input type="text" class="form-control" formControlName="guestFirstName" placeholder="First Name"
+                    <input type="text" class="form-control" [ngClass]="{'in-valid':guestBookingForm.guestFirstName.errors}" maxlength="40" formControlName="guestFirstName" placeholder="First Name"
                            id="firstName">
+                    <div [hidden]="!guestBookingForm.guestFirstName.touched" *ngIf="guestBookingForm.guestFirstName.errors">
+                      <span class="text-danger" *ngIf="guestBookingForm.guestFirstName.errors?.required">First name is required</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label for="lastName">Last Name</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
-                    <input type="text" class="form-control" formControlName="guestLastName" placeholder="Last Name"
+                    <input type="text" class="form-control" maxlength="40"  formControlName="guestLastName" placeholder="Last Name"
                            id="lastName">
+                    <div [hidden]="!guestBookingForm.guestLastName.touched" *ngIf="guestBookingForm.guestLastName.errors">
+                      <span class="text-danger" *ngIf="guestBookingForm.guestLastName.errors?.required">Last name is required</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label for="address">Address 1</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
-                    <input type="text" class="form-control" formControlName="address" placeholder="Address 1"
+                    <input type="text" class="form-control" maxlength="55"  formControlName="firstAddress" placeholder="Address 1"
                            id="address">
+                    <div [hidden]="!guestBookingForm.firstAddress.touched" *ngIf="guestBookingForm.firstAddress.errors">
+                      <span class="text-danger" *ngIf="guestBookingForm.firstAddress.errors?.required">First Address is required</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
@@ -46,47 +55,69 @@
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label for="address2">City</label>
-                    <input type="text" class="form-control" formControlName="city" placeholder="City" id="city">
+                    <label for="city">City</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
+                    <input type="text" class="form-control" maxlength="40"  formControlName="city" placeholder="City" id="city">
+                    <div [hidden]="!guestBookingForm.city.touched" *ngIf="guestBookingForm.city.errors">
+                      <span class="text-danger" *ngIf="guestBookingForm.city.errors?.required">City is required</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-3">
                   <div class="form-group">
                     <label for="address2">State</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
-                    <input type="text" class="form-control" formControlName="state" placeholder="State" id="state">
+                    <input type="text" class="form-control" maxlength="40"  formControlName="state" placeholder="State" id="state">
+                    <div [hidden]="!guestBookingForm.state.touched" *ngIf="guestBookingForm.state.errors">
+                      <span class="text-danger" *ngIf="guestBookingForm.state.errors?.required">State is required</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-3">
                   <div class="form-group">
                     <label for="address2">Zip Code</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
-                    <input type="text" class="form-control" formControlName="zipCode" placeholder="Zip Code" id="zipCode">
+                    <input type="text" class="form-control" maxlength="6"  formControlName="zipCode" placeholder="Zip Code" id="zipCode">
+                    <div [hidden]="!guestBookingForm.zipCode.touched" *ngIf="guestBookingForm.zipCode.errors">
+                      <span class="text-danger" *ngIf="guestBookingForm.zipCode.errors?.required">First name is required</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label for="phoneNumber">Phone</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
-                    <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Phone"
+                    <input type="text" class="form-control" maxlength="12"  formControlName="phone" placeholder="Phone"
                            id="phoneNumber">
+                    <div [hidden]="!guestBookingForm.phone.touched" *ngIf="guestBookingForm.phone.errors">
+                      <span class="text-danger" *ngIf="guestBookingForm.phone.errors?.required">Phone No is required</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label for="phoneNumber">Email</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
-                    <input type="email" class="form-control" formControlName="email" placeholder="Phone" id="email">
+                    <label for="email">Email</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
+                    <input type="email" class="form-control" formControlName="email" placeholder="Email" id="email">
+                    <div [hidden]="!guestBookingForm.email.touched" *ngIf="guestBookingForm.email.errors">
+                      <span class="text-danger" *ngIf="guestBookingForm.email.errors?.required">Email is required</span>
+                      <span class="text-danger" *ngIf="guestBookingForm.email.errors?.email">Invalid email format</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label for="phoneNumber">Check-In Date Time</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
+                    <label for="checkInDate">Check-In Date Time</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
                     <input type="datetime-local" class="form-control" formControlName="checkinDateTime"
                            placeholder="Check-In Date Time" id="checkInDate">
+                    <div [hidden]="!guestBookingForm.checkinDateTime.touched" *ngIf="guestBookingForm.checkinDateTime.errors">
+                      <span class="text-danger" *ngIf="guestBookingForm.checkinDateTime.errors?.required">Check-In Date is required</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
-                    <label for="phoneNumber">Check-out Date Time</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
+                    <label for="checkoutDate">Check-out Date Time</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
                     <input type="datetime-local" class="form-control" formControlName="checkoutDateTime"
                            placeholder="Check-out Date Time" id="checkoutDate">
+                    <div [hidden]="!guestBookingForm.checkoutDateTime.touched" *ngIf="guestBookingForm.checkoutDateTime.errors">
+                      <span class="text-danger" *ngIf="guestBookingForm.checkoutDateTime.errors?.required">Check-Out Date is required</span>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
@@ -94,40 +125,48 @@
                     <label class="mt-4">Room Preference</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input type="radio" class="form-check-input" formControlName="preferredRoomType" name="optionsRadios" id="optionsRadios1"
+                        <input type="radio" class="form-check-input" formControlName="roomPreferences" name="optionsRadios" id="optionsRadios1"
                                value="standard" checked="">
                         Standard </label>
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input type="radio" class="form-check-input" formControlName="preferredRoomType" name="optionsRadios" id="optionsRadios2"
+                        <input type="radio" class="form-check-input" formControlName="roomPreferences" name="optionsRadios" id="optionsRadios2"
                                value="delux">
                         Delux </label>
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
-                        <input type="radio" class="form-check-input" formControlName="preferredRoomType" name="optionsRadios" id="optionsRadios3"
+                        <input type="radio" class="form-check-input" formControlName="roomPreferences" name="optionsRadios" id="optionsRadios3"
                                value="suite">
                         Suite </label>
                     </div>
                   </fieldset>
+                  <div [hidden]="!guestBookingForm.roomPreferences.touched" *ngIf="guestBookingForm.roomPreferences.errors">
+                    <span class="text-danger" *ngIf="guestBookingForm.roomPreferences.errors?.required">Room preference required</span>
+                  </div>
                 </div>
                 <div class="col-lg-3">
                   <div class="form-group">
                     <label for="adults" class="form-label mt-4">Adults</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
                     <select class="form-select" id="adults" formControlName="adults">
+                      <option>0</option>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
                       <option>4</option>
                       <option>5</option>
                     </select>
+                  </div>
+                  <div [hidden]="!guestBookingForm.adults.touched" *ngIf="guestBookingForm.adults.errors">
+                    <span class="text-danger" *ngIf="guestBookingForm.adults.errors?.required">Please select Adults count</span>
                   </div>
                 </div>
                 <div class="col-lg-3">
                   <div class="form-group">
                     <label for="children" class="form-label mt-4">Children</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
                     <select class="form-select" id="children" formControlName="children">
+                      <option>0</option>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -135,11 +174,14 @@
                       <option>5</option>
                     </select>
                   </div>
+                  <div [hidden]="!guestBookingForm.children.touched" *ngIf="guestBookingForm.children.errors">
+                    <span class="text-danger" *ngIf="guestBookingForm.children.errors?.required">Please select Children count</span>
+                  </div>
                 </div>
                 <div class="col-lg-8">
                   <div class="form-group">
                     <label for="exampleTextarea" class="form-label mt-4">Special Instructions</label>
-                    <textarea class="form-control" formControlName="specialInstructions" id="exampleTextarea" rows="3" spellcheck="false"></textarea>
+                    <textarea class="form-control" maxlength="140" formControlName="specialInstruction" id="exampleTextarea" rows="3" spellcheck="false"></textarea>
                   </div>
                 </div>
 
