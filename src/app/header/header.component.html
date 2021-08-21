@@ -7,17 +7,17 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div *ngIf="isLoginSuccess" class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link active"  [routerLink]="['home']">Home
+          <a class="nav-link"  [routerLink]="['home']" [ngClass]="{ 'active':activeTab==='home'}" (click)="active('home')">Home
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['guest-details']">Guests</a>
+          <a class="nav-link" [routerLink]="['guest-details']" [ngClass]="{ 'active':activeTab==='guests'}" (click)="active('guests')">Guests</a>
         </li>
       </ul>
-      <button class="btn btn-info" *ngIf="this.showLogoutButton" routerLink="" >Logout</button>
+      <button class="btn btn-info" (click)="logOut()" >Logout</button>
     </div>
   </nav>
 </div>
