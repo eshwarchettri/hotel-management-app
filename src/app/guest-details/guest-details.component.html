@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container table-responsive">
   <table class="table table-bordered table-striped">
     <thead>
     <tr>
@@ -13,19 +13,52 @@
     </thead>
     <tbody>
     <tr *ngFor="let guest of guestDetails; index as i">
-      <td>{{i+1}}</td>
+      <td>{{i + 1}}</td>
       <td>{{guest.guestFirstName}}</td>
       <td>{{guest.guestLastName}}</td>
       <td>{{guest.checkinDateTime}}</td>
       <td>{{guest.checkoutDateTime}}</td>
       <td>{{guest.room?.roomNumber}}</td>
-      <td><div class="d-flex justify-content-center">
-        <div class="row">
-          <i class="fa fa-pencil mr-3" style="color: green; cursor: pointer" aria-hidden="true" (click)="editGuest(guest.guestId)"></i>
-          <i class="fa fa-trash-o" aria-hidden="true" style="color: red; cursor: pointer" (click)="deleteGuest(guest.guestId)"></i>
+      <td>
+        <div class="d-flex justify-content-center">
+          <div class="row">
+            <i class="fa fa-pencil mr-3" style="color: green; cursor: pointer" aria-hidden="true"
+               (click)="editGuest(guest.guestId)"></i>
+            <i class="btn btn-lg btn-outline-primary" class="fa fa-trash-o" aria-hidden="true"
+               style="color: red; cursor: pointer" (click)="deleteGuest(guest.guestId, content)"></i>
+          </div>
         </div>
-      </div></td>
+      </td>
     </tr>
     </tbody>
   </table>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Are You Sure You Want To Delete ?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="reasonToDelete">Reason Of Cancellation</label>
+        <div class="input-group">
+          <input id="reasonToDelete" class="form-control" placeholder="Cancellation Reason" name="dp">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" ngbAutofocus class="btn btn-danger"
+            (click)="modal.close('Save click')">YES
+    </button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss()">NO</button>
+  </div>
+
+</ng-template>
+
+

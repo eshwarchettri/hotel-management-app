@@ -8,9 +8,11 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
 import { GuestBookingComponent } from './guest-booking/guest-booking.component';
 import { GuestDetailsComponent } from './guest-details/guest-details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -19,13 +21,14 @@ import { GuestDetailsComponent } from './guest-details/guest-details.component';
     HeaderComponent,
     HomeComponent,
     GuestBookingComponent,
-    GuestDetailsComponent
+    GuestDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

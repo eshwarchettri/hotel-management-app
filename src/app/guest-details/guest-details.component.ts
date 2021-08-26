@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {GuestService} from '../service/guest.service';
 import {GuestDetails} from '../model/guest-details';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-guest-details',
@@ -10,8 +11,9 @@ import {Router} from "@angular/router";
 })
 export class GuestDetailsComponent implements OnInit {
   guestDetails: GuestDetails[] | undefined;
+   closeResult = '';
 
-  constructor(private guestService: GuestService, private router: Router) {
+  constructor(private guestService: GuestService, private router: Router, private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -33,9 +35,14 @@ export class GuestDetailsComponent implements OnInit {
       this.router.navigate(['guest-booking', guestId]);
   }
 
-  deleteGuest(guestId: any): void {
-    this.guestService.deleteGuest(guestId).subscribe(() => {
-      this.getGuestDetails();
-    });
-  }
+
+  deleteGuest(guestId: any, content: any): void {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      console.log(result);
+      this.guestService.deleteGuest(guestId).subscribe(() => {
+        this.getGuestDetails();
+      });
+      });
+}
+
 }

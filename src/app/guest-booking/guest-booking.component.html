@@ -74,19 +74,21 @@
                 <div class="col-lg-3">
                   <div class="form-group">
                     <label for="address2">Zip Code</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
-                    <input type="text" class="form-control" maxlength="6"  formControlName="zipCode" placeholder="Zip Code" id="zipCode">
+                    <input type="text" class="form-control" minlength="6" maxlength="6"  formControlName="zipCode" placeholder="Zip Code" id="zipCode">
                     <div [hidden]="!guestBookingForm.zipCode.touched" *ngIf="guestBookingForm.zipCode.errors">
-                      <span class="text-danger" *ngIf="guestBookingForm.zipCode.errors?.required">First name is required</span>
+                      <span class="text-danger" *ngIf="guestBookingForm.zipCode.errors?.required">Zip code is required</span>
+                      <span class="text-danger" *ngIf="guestBookingForm.zipCode.errors?.minlength">Please enter valid Zip code</span>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label for="phoneNumber">Phone</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
-                    <input type="text" class="form-control" maxlength="12"  formControlName="phone" placeholder="Phone"
+                    <input type="text" class="form-control"  maxlength="10"  formControlName="phone" placeholder="Phone"
                            id="phoneNumber">
                     <div [hidden]="!guestBookingForm.phone.touched" *ngIf="guestBookingForm.phone.errors">
                       <span class="text-danger" *ngIf="guestBookingForm.phone.errors?.required">Phone No is required</span>
+                      <span class="text-danger" *ngIf="guestBookingForm.phone.errors?.minlength">Please enter valid phone number</span>
                     </div>
                   </div>
                 </div>
