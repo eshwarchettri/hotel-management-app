@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {GuestService} from '../service/guest.service';
 import {GuestDetails} from '../model/guest-details';
 import {ActivatedRoute, Router} from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-guest-booking',
@@ -13,10 +14,11 @@ export class GuestBookingComponent implements OnInit {
   guestDetails: FormGroup | any;
   guestData: GuestDetails | any;
   id: any;
+   dateError = false;
+  today = (moment(new Date())).format('YYYY-MM-DDTHH:mm:ss');
 
   constructor(private guestService: GuestService, private router: Router, private route: ActivatedRoute) {
     this.id = this.route.snapshot.params.id;
-    console.log(this.id);
   }
 
   ngOnInit(): void {
@@ -48,8 +50,16 @@ export class GuestBookingComponent implements OnInit {
 
   saveOrUpdateGuest(): void {
     this.guestDetails.markAllAsTouched();
-    if (this.guestDetails?.valid) {
-      this.guestData = this.guestDetails.value;
+    this.guestData = this.guestDetails.value;
+    const checkInDate: Date = new Date(this.guestData.checkinDateTime);
+    const checkOutDate: Date = new Date(this.guestData.checkoutDateTime);
+
+    if (moment(checkOutDate).isBefore(checkInDate)) {
+      this.dateError = true;
+    } else {
+      this.dateError = false;
+    }
+    if (this.guestDetails?.valid && moment(checkOutDate).isAfter(checkInDate)) {
       if (this.id) {
         this.guestData.guestId = this.id;
       }
@@ -69,8 +79,8 @@ export class GuestBookingComponent implements OnInit {
       console.log(error);
     });
   }
+
   get guestBookingForm(): any {
-    console.log(this.guestDetails.controls);
     return this.guestDetails.controls;
   }
 }

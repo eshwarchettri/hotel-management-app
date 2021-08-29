@@ -12,7 +12,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { GuestBookingComponent } from './guest-booking/guest-booking.component';
 import { GuestDetailsComponent } from './guest-details/guest-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
