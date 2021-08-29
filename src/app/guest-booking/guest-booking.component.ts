@@ -22,7 +22,6 @@ export class GuestBookingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('today', this.today);
     this.initGuestDetailForm();
     if (this.id !== null || true) {
       this.getGuestDetail(this.id);
@@ -60,7 +59,6 @@ export class GuestBookingComponent implements OnInit {
     } else {
       this.dateError = false;
     }
-console.log(this.dateError);
     if (this.guestDetails?.valid && moment(checkOutDate).isAfter(checkInDate)) {
       if (this.id) {
         this.guestData.guestId = this.id;
