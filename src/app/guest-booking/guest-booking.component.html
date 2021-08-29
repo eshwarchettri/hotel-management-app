@@ -106,19 +106,23 @@
                   <div class="form-group">
                     <label for="checkInDate">Check-In Date Time</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
                     <input type="datetime-local" class="form-control" formControlName="checkinDateTime"
-                           placeholder="Check-In Date Time" id="checkInDate">
+                           placeholder="Check-In Date Time" id="checkInDate" [min]="today">
                     <div [hidden]="!guestBookingForm.checkinDateTime.touched" *ngIf="guestBookingForm.checkinDateTime.errors">
                       <span class="text-danger" *ngIf="guestBookingForm.checkinDateTime.errors?.required">Check-In Date is required</span>
                     </div>
+
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label for="checkoutDate">Check-out Date Time</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
                     <input type="datetime-local" class="form-control" formControlName="checkoutDateTime"
-                           placeholder="Check-out Date Time" id="checkoutDate">
+                           placeholder="Check-out Date Time" id="checkoutDate" [min]="today">
                     <div [hidden]="!guestBookingForm.checkoutDateTime.touched" *ngIf="guestBookingForm.checkoutDateTime.errors">
                       <span class="text-danger" *ngIf="guestBookingForm.checkoutDateTime.errors?.required">Check-Out Date is required</span>
+                    </div>
+                    <div [hidden]="!this.dateError">
+                      <span class="text-danger">Check-Out Date cannot be earlier then Check-In Date </span>
                     </div>
                   </div>
                 </div>
@@ -128,19 +132,19 @@
                     <div class="form-check">
                       <label class="form-check-label">
                         <input type="radio" class="form-check-input" formControlName="roomPreferences" name="optionsRadios" id="optionsRadios1"
-                               value="standard" checked="">
+                               value="STANDARD" checked="">
                         Standard </label>
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
                         <input type="radio" class="form-check-input" formControlName="roomPreferences" name="optionsRadios" id="optionsRadios2"
-                               value="delux">
+                               value="DELUX">
                         Delux </label>
                     </div>
                     <div class="form-check">
                       <label class="form-check-label">
                         <input type="radio" class="form-check-input" formControlName="roomPreferences" name="optionsRadios" id="optionsRadios3"
-                               value="suite">
+                               value="SUITE">
                         Suite </label>
                     </div>
                   </fieldset>
