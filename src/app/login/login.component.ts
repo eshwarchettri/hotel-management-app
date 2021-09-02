@@ -54,8 +54,9 @@ export class LoginComponent implements OnInit {
     this.credential.userName = this.loginForm.controls.userName.value;
     this.credential.password = this.loginForm.controls.password.value;
     this.loginService.post(this.credential).subscribe(() => {
+      sessionStorage.setItem('employeeName', this.credential.userName);
       this.observableService.successFullLogin();
-      this.router.navigate(['home']);
+        this.router.navigate(['home']);
       // tslint:disable-next-line:no-shadowed-variable
     }, (error: any) => {
       console.log(error);

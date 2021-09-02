@@ -17,6 +17,7 @@
           <a class="nav-link" [routerLink]="['guest-details']" [ngClass]="{ 'active':activeTab==='guests'}" (click)="active('guests')">Guests</a>
         </li>
       </ul>
+      <p style="color:white" class="pt-3 pr-3">WELCOME <strong>{{this.employeeName}}</strong></p>
       <button class="btn btn-info" (click)="logOut()" >Logout</button>
     </div>
   </nav>

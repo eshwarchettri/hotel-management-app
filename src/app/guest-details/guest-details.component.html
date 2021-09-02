@@ -1,4 +1,4 @@
-  <div class="container-flex table-responsive">
+<div class="container-flex table-responsive">
 
   <table class="table table-bordered table-striped">
     <thead>
@@ -19,8 +19,8 @@
                 currentPage: currentPage,
                 totalItems: totalElements
               };
-        let i = index" [class.active]="i == currentIndex">
-      <td>{{i + 1}}</td>
+        let i = index">
+      <td>{{5*(currentPage-1)+ i+1}}</td>
       <td>{{guest.guestFirstName}}</td>
       <td>{{guest.guestLastName}}</td>
       <td>{{guest.checkinDateTime}}</td>
@@ -46,7 +46,6 @@
   <div class="row">
     <div class="col-xs-12 col-12  d-flex justify-content-end">
       <pagination-controls
-        responsive="true"
         previousLabel="Prev"
         nextLabel="Next"
 
@@ -66,11 +65,15 @@
   <div class="modal-body">
     <form [formGroup]="reasonToDeleteForm">
       <div class="form-group">
-        <label for="reasonToDelete">Reason Of Cancellation</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
+        <label for="reasonToDelete">Reason Of Cancellation</label><i class="fa fa-asterisk"
+                                                                     style="color: red; font-size: 0.4rem;top: -5px; position: relative"
+                                                                     aria-hidden="true"></i>
         <div class="input-group">
-          <input id="reasonToDelete" class="form-control" placeholder="Cancellation Reason" formControlName="reasonForCancel" name="dp">
+          <input id="reasonToDelete" class="form-control" placeholder="Cancellation Reason"
+                 formControlName="reasonForCancel" name="dp">
           <div [hidden]="!reasonForm.reasonForCancel.touched" *ngIf="reasonForm.reasonForCancel.errors"
-               class="text-danger col-lg-12"> Cancellation Reason is required</div>
+               class="text-danger col-lg-12"> Cancellation Reason is required
+          </div>
         </div>
       </div>
     </form>

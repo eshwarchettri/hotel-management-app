@@ -8,13 +8,16 @@ import {Router} from "@angular/router";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit{
-  isLoginSuccess =  false;
+export class HeaderComponent implements OnInit {
+  isLoginSuccess = false;
   activeTab = 'home';
+  employeeName: any;
+
   constructor(private observableService: ObservableService, private router: Router) {
     this.observableService.isLoggedIn$.subscribe((res: boolean) => {
+      this.employeeName = sessionStorage.getItem('employeeName');
       this.isLoginSuccess = res;
-      console.log(this.isLoginSuccess);
+
     });
   }
 
@@ -24,7 +27,7 @@ export class HeaderComponent implements OnInit{
 
   logOut(): void {
     sessionStorage.clear();
-    this.isLoginSuccess =  false;
+    this.isLoginSuccess = false;
     this.router.navigate(['']);
   }
 

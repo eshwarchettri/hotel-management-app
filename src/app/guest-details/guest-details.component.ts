@@ -11,7 +11,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./guest-details.component.css']
 })
 export class GuestDetailsComponent implements OnInit {
-  guestDetails: GuestDetails[] | undefined;
+  guestDetails: GuestDetails[] | any ;
   reasonToDeleteForm: FormGroup | any;
   totalElements: any;
   currentPage = 1;
