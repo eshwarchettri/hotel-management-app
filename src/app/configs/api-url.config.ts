@@ -1,6 +1,7 @@
 export const apiUrls = {
     authenticationUrl: 'authenticate/user-login',
-    guestServiceUrl: 'guests'
+    guestServiceUrl: 'guests',
+    createEmployee: 'employee'
 
   };
 

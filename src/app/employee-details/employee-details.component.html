@@ -1,0 +1,36 @@
+<div class="container-flex table-responsive">
+
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>Serial no</th>
+      <th>Employee Name</th>
+      <th>Phone</th>
+      <th>E-Mail</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employeeDetails
+        let i = index">
+      <td>{{i+1}}</td>
+      <td>{{employee.employeeName}}</td>
+      <td>{{employee.phoneNumber}}</td>
+      <td>{{employee.emailId}}</td>
+      <td>
+        <div class="d-flex justify-content-center">
+          <div class="row">
+            <i class="btn btn-lg btn-outline-primary" class="fa fa-trash-o" aria-hidden="true"
+               style="color: #ff0000; cursor: pointer" (click)="deleteEmployee(employee.employeeId)"></i>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <button (click)="createEmployee()" class="btn-primary btn ">Create Employee</button>
+  </div>
+</div>
+
+

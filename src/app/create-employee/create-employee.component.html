@@ -1,0 +1,100 @@
+<div class="container-flex" style="background-image: url('./assets/home2.jpeg'); height: 100%">
+
+
+  <form [formGroup]="employeeDetails" (ngSubmit)="saveOrUpdateEmployee()">
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
+        <div class="card">
+          <div class="card-body">
+            <div class="card bg-success text-white">
+              <div class="card-body d-flex justify-content-center"><h4>Hotel Paradise</h4></div>
+            </div>
+            <div class="col-lg-12">
+              <div class="row">
+                <div class="col-lg-12 my-3">
+                  <h5>New Employee Details</h5>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="employeeName">Employee Name</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
+
+                    <input type="text" class="form-control" [ngClass]="{'in-valid':employeeForm.employeeName.errors}" maxlength="40" formControlName="employeeName" placeholder="Employee Name"
+                           id="employeeName">
+                    <div [hidden]="!employeeForm.employeeName.touched" *ngIf="employeeForm.employeeName.errors">
+                      <span class="text-danger" *ngIf="employeeForm.employeeName.errors?.required">Employee name is required</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="phoneNumber">Phone</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
+                    <input type="text" class="form-control"  maxlength="10"  formControlName="phoneNumber" placeholder="Phone"
+                           id="phoneNumber">
+                    <div [hidden]="!employeeForm.phoneNumber.touched" *ngIf="employeeForm.phoneNumber.errors">
+                      <span class="text-danger" *ngIf="employeeForm.phoneNumber.errors?.required">Phone No is required</span>
+                      <span class="text-danger" *ngIf="employeeForm.phoneNumber.errors?.minlength">Please enter valid phone number</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="password">Password</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
+                    <input type="password" class="form-control"  maxlength="10"  formControlName="password" placeholder="Password"
+                           id="password">
+                    <div [hidden]="!employeeForm.password.touched" *ngIf="employeeForm.password.errors">
+                      <span class="text-danger" *ngIf="employeeForm.password.errors?.required">Password is required</span>
+                      <span class="text-danger" *ngIf="employeeForm.password.errors?.minlength">Password should be at least 8 letters </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
+                    <input type="password" class="form-control"  maxlength="10"  formControlName="confirmPassword" placeholder="Confirm Password" compare = "password"
+                           id="confirmPassword">
+                    <div [hidden]="!employeeForm.confirmPassword.touched" *ngIf="employeeForm.confirmPassword.errors">
+                      <span class="text-danger" *ngIf="employeeForm.confirmPassword.errors?.required">Confirm Password is required</span>
+                      <span class="text-danger" *ngIf="employeeForm.confirmPassword.errors['compare']">Confirm password and Password dont match</span>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="email">Email</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
+                    <input type="email" class="form-control" formControlName="emailId" placeholder="Email" id="email">
+                    <div [hidden]="!employeeForm.emailId.touched" *ngIf="employeeForm.emailId.errors">
+                      <span class="text-danger" *ngIf="employeeForm.emailId.errors?.required">Email is required</span>
+                      <span class="text-danger" *ngIf="employeeForm.emailId.errors?.email">Invalid email format</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="privilege" class="form-label mt-4">Privilege</label><i class="fa fa-asterisk" style="color: red; font-size: 0.4rem;top: -5px; position: relative" aria-hidden="true"></i>
+                    <select class="form-select" id="privilege" formControlName="privilege">
+                      <option value="ADMIN">Admin</option>
+                      <option value="USER">User</option>
+                    </select>
+                  </div>
+                  <div [hidden]="!employeeForm.privilege.touched" *ngIf="employeeForm.privilege.errors">
+                    <span class="text-danger" *ngIf="employeeForm.privilege.errors?.required">Please select Privilege</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+    <div class="d-flex justify-content-center py-3">
+      <button type="submit" class="btn btn-primary" style="min-width: 100px">Save</button>
+    </div>
+  </form>
+</div>

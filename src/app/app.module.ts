@@ -13,6 +13,10 @@ import { GuestBookingComponent } from './guest-booking/guest-booking.component';
 import { GuestDetailsComponent } from './guest-details/guest-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { CompareValidatorsDirective } from './directives/compare-validators.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +26,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HomeComponent,
     GuestBookingComponent,
     GuestDetailsComponent,
+    EmployeeDetailsComponent,
+    CreateEmployeeComponent,
+    ChangePasswordComponent,
+    CompareValidatorsDirective,
   ],
   imports: [
     BrowserModule,

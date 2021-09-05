@@ -17,8 +17,29 @@
           <a class="nav-link" [routerLink]="['guest-details']" [ngClass]="{ 'active':activeTab==='guests'}" (click)="active('guests')">Guests</a>
         </li>
       </ul>
-      <p style="color:white" class="pt-3 pr-3">WELCOME <strong>{{this.employeeName}}</strong></p>
-      <button class="btn btn-info" (click)="logOut()" >Logout</button>
+<!--      <p style="color:white" class="pt-3 pr-3">WELCOME <strong>{{this.employeeName}}</strong></p>-->
+<!--      <button class="btn btn-info" (click)="logOut()" >Logout</button>-->
+<!--    </div>-->
+    <div ngbDropdown class="dropdown d-flex justify-content-end">
+      <a class="btn btn_secondary" role="button" id="dropdownMenuLink2" ngbDropdownToggle
+         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:white"> {{employeeName}}
+      </a>
+      <a class="icon-notfy btn font-size-icon" role="button" id="dropdownMenuLink3"
+         data-toggle="dropdown" aria-haspopup="true"> <i class="fa fa-user" style="color:darkseagreen"></i>
+      </a>
+
+      <div class="dropdown-menu profile-toolbar" ngbDropdownMenu aria-labelledby="dropdownMenuLink2">
+        <a  ngbDropdownItem class="dropdown-item p-3 back-color-grey"
+           [routerLink]="['employee-details']">Employee Details</a>
+        <a  ngbDropdownItem class="dropdown-item p-3 back-color-grey"
+            [routerLink]="['create-employee']">Create Employee</a>
+        <a  ngbDropdownItem class="dropdown-item p-3 back-color-grey"
+            [routerLink]="['change-password']">Change Password</a>
+        <a ngbDropdownItem class="dropdown-item help-data p-3 border-top-color view-all" (click)="logOut()">
+          Logout
+        </a>
+      </div>
     </div>
+  </div>
   </nav>
 </div>
